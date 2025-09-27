@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs>
+    <linearGradient id="gc" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#111111" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" rx="48" fill="url(#gc)" />
+  <circle cx="300" cy="240" r="120" fill="rgba(255,255,255,0.12)" />
+  <path d="M210 420c36-36 76-54 120-54s84 18 120 54v44c-40 32-76 48-120 48s-84-16-120-48z" fill="rgba(0,0,0,0.28)" />
+  <text x="300" y="260" text-anchor="middle" font-family="'Inter', sans-serif" font-size="120" fill="#ffffff" font-weight="700">C</text>
+  <text x="300" y="420" text-anchor="middle" font-family="'Inter', sans-serif" font-size="34" fill="#ffffff" font-weight="600">Chris Miller</text>
+  <text x="300" y="460" text-anchor="middle" font-family="'Inter', sans-serif" font-size="22" fill="#cbd5f5">Field Supervisor</text>
+</svg>

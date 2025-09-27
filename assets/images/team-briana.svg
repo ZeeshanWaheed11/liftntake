@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs>
+    <linearGradient id="gb" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00C2FF" />
+      <stop offset="100%" stop-color="#6ee7ff" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" rx="48" fill="url(#gb)" />
+  <circle cx="300" cy="240" r="120" fill="rgba(255,255,255,0.18)" />
+  <path d="M212 420c40-38 80-56 128-56s88 18 128 56v44c-44 34-84 50-128 50s-84-16-128-50z" fill="rgba(0,0,0,0.18)" />
+  <text x="300" y="260" text-anchor="middle" font-family="'Inter', sans-serif" font-size="120" fill="#ffffff" font-weight="700">B</text>
+  <text x="300" y="420" text-anchor="middle" font-family="'Inter', sans-serif" font-size="34" fill="#0f172a" font-weight="700">Briana Scott</text>
+  <text x="300" y="460" text-anchor="middle" font-family="'Inter', sans-serif" font-size="22" fill="#0f172a" font-weight="600">Operations Lead</text>
+</svg>

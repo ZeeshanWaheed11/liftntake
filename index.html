@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LIFT N TAKE — Junk Removal & Property Clean Up</title>
+  <meta name="description" content="Local junk removal & property clean up. Fast scheduling, upfront pricing, and friendly pros. Call now or book online!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --brand:#111111;
+      --accent:#F95D14;
+      --cta:#F95D14;
+      --ctaText:#ffffff;
+      --muted:#6b7280;
+      --bg:#f7f7f7;
+      --ring:rgba(0,0,0,.08);
+      --shadow:0 10px 30px rgba(0,0,0,.08);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#0f172a;background:var(--bg);overflow-x:hidden}
+    body{padding-bottom:72px;}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:1150px;margin:0 auto;padding:0 20px}
+
+    .topbar{background:#111111;color:#f9fafb;font-weight:600;font-size:14px}
+    .topbar .wrap{display:flex;gap:14px;align-items:center;justify-content:space-between;padding:10px 0}
+    .topbar .left{display:flex;gap:18px;align-items:center;opacity:.88}
+    .topbar .right a{display:inline-flex;align-items:center;gap:8px;background:#ffffff;padding:8px 16px;border-radius:999px;font-weight:600;color:#0f172a;border:1px solid rgba(15,23,42,0.12)}
+    .phone-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:999px;background:var(--cta);color:#fff;font-size:11px;margin-right:6px}
+
+    header{position:sticky;top:0;background:#fff;border-bottom:1px solid #eee;z-index:40}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .logo{display:flex;align-items:center}
+    .logo-mark{display:block;height:56px;width:auto}
+    .menu{display:none;gap:18px;align-items:center}
+    .menu a{font-weight:400;color:#111}
+    .menu .btn{padding:10px 16px;font-size:14px;color:var(--ctaText)}
+    .hamburger{display:inline-flex;flex-direction:column;gap:4px;background:transparent;border:0;padding:4px}
+    .hamburger span{width:24px;height:2.5px;background:#111;border-radius:2px}
+
+    .drawer{position:fixed;inset:0 0 0 auto;width:78%;max-width:360px;background:#fff;box-shadow:-20px 0 40px rgba(0,0,0,.15);transform:translateX(105%);transition:transform .25s ease;z-index:50;overflow-y:auto}
+    .drawer.open{transform:translateX(0)}
+    .drawer .inner{padding:22px}
+    .drawer a{display:block;padding:14px 4px;border-bottom:1px solid #eee;font-weight:700}
+    .drawer .btn{margin-top:18px;width:100%;justify-content:center;text-align:center;border:none;border-bottom:none}
+
+    main{display:block}
+
+    .hero{position:relative;background:#0b0b0b;color:#fff;padding:0}
+    .hero .wrap{display:grid;grid-template-columns:1fr;align-items:center}
+    .hero .media{position:relative}
+    .hero-picture{position:relative;overflow:hidden}
+    .hero .media::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.22),rgba(0,0,0,0.55));z-index:1}
+    .hero img{width:100%;height:auto;max-height:760px;object-fit:cover;object-position:center top;filter:grayscale(.02);opacity:.99;display:block}
+    .hero .headline{position:absolute;left:50%;bottom:32px;transform:translateX(-50%);width:min(100%,1150px);padding:0 20px;z-index:2}
+    .hero .card{background:rgba(0,0,0,.65);backdrop-filter:saturate(1.3) blur(6px);border:1px solid rgba(255,255,255,.1);box-shadow:0 20px 60px rgba(0,0,0,.35);border-radius:20px;padding:24px}
+    .hero h1{margin:0 0 6px;font-size:34px;letter-spacing:.5px}
+    .hero p{margin:0 0 14px;color:#e5e7eb;font-weight:600}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 18px;border-radius:999px;background:var(--cta);color:var(--ctaText);font-weight:700;border:none}
+    .btn.secondary{background:#fff;color:#111;border:1px solid #e5e7eb}
+    .btn .sub{font-weight:700;opacity:.9}
+    .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .badge{font-size:12px;padding:8px 10px;border-radius:999px;background:#111;border:1px solid #2b2b2b}
+
+    section{padding:72px 0;background:#fff}
+    section.alt{background:linear-gradient(180deg,#fafafa,#f3f4f6)}
+    .section-title{font-size:28px;margin:0 0 10px}
+    .section-sub{color:#52525b;margin:0 0 32px;font-weight:600;max-width:620px}
+
+    .grid{display:grid;gap:16px}
+    .service-card{background:#fff;border:1px solid #eee;border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+    .service-card h3{margin:0 0 8px}
+    .service-card p{margin:0;color:#4b5563}
+
+    .steps{display:grid;gap:16px}
+    .step{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid #eee;border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .num{min-width:36px;height:36px;border-radius:999px;background:#111;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:900}
+
+    .reviews{display:grid;gap:16px}
+    .review{background:#fff;border:1px solid #eee;border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+    .review strong{display:block;margin-bottom:8px}
+
+    .gallery{display:grid;gap:10px}
+    .gallery img{width:100%;height:220px;object-fit:cover;border-radius:12px;border:1px solid #eee}
+
+    .owner{display:flex;flex-direction:column;gap:28px;align-items:stretch}
+    .owner > *{min-width:0}
+    .owner > div:last-child{display:flex;flex-direction:column;gap:18px}
+    .owner-card{background:var(--cta);color:#fff;border-radius:26px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(249,93,20,0.28);width:100%}
+    .owner-card .portrait{padding:0;background:#030712;position:relative;overflow:hidden;min-height:280px}
+    .owner-card .portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,17,0.1) 38%,rgba(17,17,17,0.65) 100%)}
+    .owner-card .portrait img{width:100%;height:100%;object-fit:cover;object-position:center 18%}
+    .owner-card .bio{padding:28px 28px 32px;display:flex;flex-direction:column;gap:18px}
+    .owner-card h3{margin:0 0 10px;font-size:26px;color:#fff}
+    .owner-card p{margin:0 0 16px;color:rgba(255,255,255,0.92)}
+    .owner-card ul{margin:0;padding-left:18px;color:rgba(255,255,255,0.88);list-style:disc}
+    .owner-card ul li::marker{color:#fff}
+
+    .team-carousel{position:relative;margin-top:16px}
+    .team-grid{display:flex;gap:24px;padding:6px 0;margin:0;overflow-x:auto;scroll-snap-type:x proximity;scroll-behavior:smooth;scroll-padding-inline:0;scrollbar-width:thin;max-width:100%}
+    .team-grid::-webkit-scrollbar{height:3px}
+    .team-grid::-webkit-scrollbar-thumb{background:rgba(15,23,42,0.25);border-radius:999px}
+    .team-grid::-webkit-scrollbar-track{background:transparent}
+    .team-card{flex:0 0 min(100%,420px);max-width:min(100%,420px);background:#fff;border-radius:26px;border:1px solid rgba(15,23,42,0.06);box-shadow:0 20px 44px rgba(15,23,42,0.1);overflow:hidden;display:flex;flex-direction:column;position:relative;scroll-snap-align:center;transition:transform .25s ease,box-shadow .25s ease}
+    .team-card:hover{transform:translateY(-8px);box-shadow:0 28px 56px rgba(15,23,42,0.16)}
+    .team-card figure{margin:0;height:240px;overflow:hidden;position:relative}
+    .team-card figure::after{content:"";position:absolute;inset:0;background:linear-gradient(185deg,rgba(15,23,42,0) 45%,rgba(15,23,42,0.28) 100%);pointer-events:none}
+    .team-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+    .team-card:hover img{transform:scale(1.05)}
+    .team-card .info{padding:26px 24px 28px;display:flex;flex-direction:column;gap:16px}
+    .team-card .role{color:#64748b;font-size:12px;text-transform:uppercase;letter-spacing:.18em;font-weight:700}
+    .team-dots{position:static;margin:16px 0 0;display:flex;gap:12px;justify-content:center}
+    .team-dot{width:10px;height:10px;border-radius:999px;background:#d0d7e3;border:none;transition:all .2s ease;cursor:pointer}
+    .team-dot.is-active{background:#111;width:28px}
+
+    .areas-grid{display:grid;gap:28px;margin-top:34px}
+    .coverage-card{background:#fff;border-radius:28px;border:1px solid rgba(15,23,42,0.08);box-shadow:0 20px 48px rgba(15,23,42,0.1);padding:32px}
+    .coverage-card h3{margin:0 0 12px;font-size:24px}
+    .coverage-card p{margin:0 0 22px;color:#475569;max-width:540px}
+    .area-list{display:grid;gap:16px}
+    .area-item{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-radius:18px;background:#f8fafc;border:1px solid rgba(148,163,184,0.35);color:#0f172a}
+    .area-item .city{font-weight:700;font-size:17px}
+    .area-item .tag{font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;background:rgba(249,93,20,0.12);color:#b5470f}
+    .areas-cta{background:var(--cta);color:#fff;border-radius:28px;padding:34px;border:1px solid rgba(249,93,20,0.4);box-shadow:0 18px 42px rgba(249,93,20,0.28);overflow:hidden}
+    .areas-cta h3{margin-top:0;font-size:24px}
+    .areas-cta p{margin:12px 0 20px;color:rgba(255,255,255,0.92)}
+    .areas-cta ul{margin:0 0 24px;padding-left:0;list-style:none;color:rgba(255,255,255,0.9);display:grid;gap:10px}
+    .areas-cta ul li{position:relative;padding-left:18px}
+    .areas-cta ul li::before{content:"•";position:absolute;left:0;color:rgba(255,255,255,0.8);font-size:18px;line-height:1}
+    .areas-cta .btn{align-self:flex-start;background:#fff;color:#141414;font-weight:700;padding:12px 20px;border-radius:12px}
+
+    .contact{display:grid;gap:18px}
+    .card{background:#fff;border:1px solid #eee;border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+    label{display:block;font-weight:700;margin:10px 0 6px}
+    input,textarea{width:100%;padding:12px 14px;border:1px solid #e5e7eb;border-radius:12px;font-size:16px;background:#fff}
+    input:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:2px}
+    textarea{min-height:120px}
+
+    footer{background:#ffffff;color:#111111}
+    footer a{color:#111111}
+    footer .foot{display:grid;gap:16px;padding:34px 0}
+    footer .foot > div{display:flex;flex-direction:column;gap:10px}
+    .brandline{display:flex;align-items:center}
+    .brandline .logo-mark{height:44px;width:auto}
+    .foot-links{margin-top:10px;display:grid;gap:8px}
+    .foot-cta{margin:10px 0 0}
+    .subtle{color:#4b5563}
+    .foot-bottom-wrap{border-top:1px solid #e5e7eb}
+    .foot-bottom{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;padding:14px 0;color:#4b5563;font-size:14px}
+
+    .callbar{position:fixed;left:0;right:0;bottom:0;background:#000;color:#fff;padding:12px 16px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;z-index:60;transform:translateY(120%);transition:transform .25s ease,opacity .25s ease;opacity:0;pointer-events:none}
+    .callbar.show{transform:translateY(0);opacity:1;pointer-events:auto}
+    .callbar-btn{background:var(--cta);color:var(--ctaText);padding:12px 14px;border-radius:12px;font-weight:700;border:none;text-align:center;display:inline-flex;justify-content:center;align-items:center;width:100%}
+    .callbar-btn.secondary{background:#fff;color:#111}
+
+    @media(max-width:699px){
+      .topbar .wrap{flex-direction:column;gap:6px;text-align:center}
+      .drawer{width:100%;max-width:100%;border-radius:0;box-shadow:none}
+      .drawer .inner{padding:28px 24px}
+      .drawer a{font-size:18px;padding:16px 6px}
+      .nav{padding:20px 0;min-height:80px}
+      .logo-mark{height:54px}
+      header{position:sticky}
+      .hero img{height:420px}
+      .hero h1{font-size:30px}
+      .owner > div:last-child{gap:16px}
+      .owner-card .bio{padding:26px}
+      .owner-card .portrait{min-height:240px}
+      .owner-card .portrait::after{background:linear-gradient(185deg,rgba(17,17,17,0.12) 40%,rgba(17,17,17,0.68) 100%)}
+      .owner-card .portrait img{object-position:center 18%}
+      .team-carousel{margin-top:8px}
+    }
+
+    @media(min-width:700px){
+      .menu{display:flex}
+      .hamburger{display:none}
+      .hero img{height:620px}
+      .grid{grid-template-columns:repeat(3,1fr)}
+      .steps{grid-template-columns:repeat(3,1fr)}
+      .reviews{grid-template-columns:repeat(3,1fr)}
+      .gallery{grid-template-columns:repeat(4,1fr)}
+      .contact{grid-template-columns:1.2fr .8fr}
+      footer .foot{grid-template-columns:1fr 1fr 1fr}
+    }
+
+    @media(min-width:960px){
+      .hero h1{font-size:42px}
+      .hero p{font-size:18px}
+      .section-title{font-size:32px}
+      .team-grid{gap:28px}
+      .grid{gap:22px}
+      .areas-grid{grid-template-columns:1.1fr 0.9fr}
+      .owner{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:32px;align-items:start}
+      .owner-card .portrait{min-height:100%}
+    }
+
+    @media(min-width:760px){
+      body{padding-bottom:0}
+      .callbar{display:none}
+    }
+
+    @media(max-width:540px){
+      body{padding-bottom:96px}
+      .container{padding:0 16px}
+      .topbar{font-size:13px}
+      .topbar .left{gap:10px;flex-wrap:wrap;justify-content:center}
+      .logo-mark{height:52px}
+      .brandline .logo-mark{height:40px}
+      .hero img{height:360px}
+      .hero .headline{bottom:18px}
+      .hero .card{padding:18px}
+      .hero h1{font-size:26px}
+      .hero p{font-size:15px}
+      .cta-row{flex-direction:column}
+      .cta-row .btn{width:100%;justify-content:center}
+      section{padding:56px 0}
+      .section-title{font-size:24px}
+      .section-sub{font-size:15px}
+      .owner-card .bio{padding:24px}
+      .owner-card .portrait{min-height:260px}
+      .team-card .info{padding:22px 18px 24px}
+      .contact{gap:26px}
+      footer .foot{grid-template-columns:1fr;text-align:center}
+      footer .foot > div{align-items:center}
+      footer .foot .brandline{justify-content:center}
+      footer .foot .foot-links{justify-items:center}
+      footer .foot a{justify-self:center}
+      footer .foot p{max-width:280px;text-align:center}
+      footer .foot .foot-cta{display:flex;justify-content:center;width:100%}
+      .callbar{padding:12px 20px;gap:10px}
+    }
+
+    @media(max-width:386px){
+      body{padding-bottom:88px}
+      .hero h1{font-size:24px}
+      .hero p{font-size:14px}
+      .badges{justify-content:flex-start}
+      .badges .badge{font-size:11px}
+      .topbar .right a{padding:8px 12px}
+    }
+
+    @media(max-width:900px){
+      .team-carousel{padding:0}
+      .team-grid{gap:18px;padding:4px 16px 12px;margin:0;scroll-padding-inline:16px}
+      .team-dots{margin-top:10px}
+      .team-card{flex:0 0 min(82vw,420px);max-width:min(82vw,420px)}
+      .team-card figure{height:220px}
+      .team-card .info{padding:22px 20px 24px;gap:14px}
+      .areas-cta{text-align:center;padding:28px}
+      .areas-cta ul{padding-left:18px;text-align:left}
+      .areas-cta ul li{padding-left:14px}
+      .areas-cta .btn{justify-content:center}
+    }
+
+    @media(min-width:960px){
+      .owner{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:32px;align-items:start}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container wrap">
+      <div class="left">
+        <span>Mon – Sun 7AM – 7PM</span>
+        <span>|</span>
+        <span>Locally Owned & Operated</span>
+      </div>
+      <div class="right">
+        <a href="tel:+17404059277" aria-label="Call (740) 405-9277"><span class="phone-icon" aria-hidden="true">☎</span>(740) 405-9277</a>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <div class="container nav">
+      <a href="#home" class="logo" aria-label="Lift N Take home">
+        <img class="logo-mark" src="assets/images/logo.png" alt="Lift N Take logo">
+      </a>
+      <nav class="menu" aria-label="Main">
+        <a href="#services">Services</a>
+        <a href="#how">How it works</a>
+        <a href="#owner">Our Team</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#areas">Service Areas</a>
+        <a href="#contact">Contact</a>
+        <a class="btn" href="#book">Book Now</a>
+      </nav>
+      <button class="hamburger" aria-label="Open menu" id="openMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="inner">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <div class="brandline" aria-label="Lift N Take">
+          <img class="logo-mark" src="assets/images/logo.png" alt="Lift N Take logo" loading="lazy">
+        </div>
+        <button id="closeMenu" aria-label="Close menu" style="background:#f3f4f6;border:1px solid #e5e7eb;border-radius:8px;padding:8px 10px">✕</button>
+      </div>
+      <a href="#services" onclick="toggleDrawer(false)">Services</a>
+      <a href="#how" onclick="toggleDrawer(false)">How it works</a>
+      <a href="#owner" onclick="toggleDrawer(false)">Our Team</a>
+      <a href="#reviews" onclick="toggleDrawer(false)">Reviews</a>
+      <a href="#areas" onclick="toggleDrawer(false)">Service Areas</a>
+      <a href="#contact" onclick="toggleDrawer(false)">Contact</a>
+      <a class="btn" href="#book" onclick="toggleDrawer(false)">Book Now</a>
+    </div>
+  </aside>
+
+  <main>
+    <section class="hero" id="home" aria-label="Hero">
+      <div class="media hero-picture">
+        <img src="assets/images/hero-owners.jpg" alt="Lift N Take owners standing proudly in front of their hauling truck" />
+        <div class="headline">
+          <div class="card">
+            <h1>LIFT N TAKE</h1>
+            <p>Junk removal & property clean up — same-day pickups, friendly crew, upfront pricing.</p>
+            <div class="cta-row">
+              <a class="btn" href="#book">BOOK NOW</a>
+              <a class="btn secondary" href="tel:+17404059277">CALL (740) 405-9277</a>
+            </div>
+            <div class="badges">
+              <span class="badge">Licensed & Insured</span>
+              <span class="badge">Upfront Pricing</span>
+              <span class="badge">Curbside Discounts</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="alt" aria-label="Services">
+      <div class="container">
+        <h2 class="section-title">What we take</h2>
+        <p class="section-sub">From single-item pickups to full property cleanouts, our crew handles the heavy lifting so you do not have to.</p>
+        <div class="grid">
+          <div class="service-card"><h3>General Junk Removal</h3><p>Boxes, trash, garage cleanouts, move-outs, and more.</p></div>
+          <div class="service-card"><h3>Property Clean Up</h3><p>Rental turnovers, estate cleanouts, hoarder help, eviction cleanups.</p></div>
+          <div class="service-card"><h3>Appliance Removal</h3><p>Fridges, washers, dryers, water heaters (proper disposal).</p></div>
+          <div class="service-card"><h3>Furniture Hauling</h3><p>Couches, mattresses, dressers, office furniture.</p></div>
+          <div class="service-card"><h3>Light Demolition</h3><p>Sheds, playsets, cabinets, carpet & flooring tear-outs.</p></div>
+          <div class="service-card"><h3>Outdoor Debris</h3><p>Yard waste, storm debris, brush piles, fencing.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" aria-label="How it works">
+      <div class="container">
+        <h2 class="section-title">How it works</h2>
+        <p class="section-sub">Easy, fast, and friendly—just three steps.</p>
+        <div class="steps">
+          <div class="step"><span class="num">1</span><div><strong>Call or book online</strong><p>Tell us what you have. We set a 2-hour arrival window and text when we are on the way.</p></div></div>
+          <div class="step"><span class="num">2</span><div><strong>On-site quote</strong><p>We confirm a firm, all-inclusive price before work begins. No surprises.</p></div></div>
+          <div class="step"><span class="num">3</span><div><strong>We lift &amp; take</strong><p>Our crew loads everything, sweeps up, and hauls it for eco-friendly disposal.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="owner" class="alt" aria-label="Owner and team">
+      <div class="container owner">
+        <div class="owner-card">
+          <div class="portrait"><img src="assets/images/hero-owners.jpg" alt="Lift N Take owners smiling with their truck" loading="lazy"></div>
+          <div class="bio">
+            <h3>Meet the owners</h3>
+            <p>The Lift N Take founders are hands-on with every project, making sure jobs are completed quickly, safely, and with the friendly service our community expects.</p>
+            <ul>
+              <li>Locally owned and operated right here in Licking County</li>
+              <li>On-site leadership at every cleanup for quality assurance</li>
+              <li>Personalized recommendations to donate, recycle, or dispose responsibly</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <h2 class="section-title">The crew you will meet</h2>
+          <p class="section-sub">Friendly pros who know how to move fast, lift safely, and leave your property clean.</p>
+          <div class="team-carousel" data-carousel>
+            <div class="team-grid" data-track>
+            <article class="team-card">
+              <figure class="team-photo">
+                <img src="assets/images/team-01.jpg" alt="Lift N Take field crew smiling in front of the truck" loading="lazy">
+              </figure>
+              <div class="info">
+                <p class="role">On-site project leads</p>
+                <h3 style="margin:0">Field Leadership</h3>
+                <p style="margin:0;color:#4b5563">Our leads coordinate every pickup, confirm pricing on arrival, and make sure your property is left spotless.</p>
+              </div>
+            </article>
+            <article class="team-card">
+              <figure class="team-photo">
+                <img src="assets/images/team-02.jpg" alt="Lift N Take crew loading furniture onto a trailer" loading="lazy">
+              </figure>
+              <div class="info">
+                <p class="role">Heavy lifters &amp; loaders</p>
+                <h3 style="margin:0">Hauling Specialists</h3>
+                <p style="margin:0;color:#4b5563">Certified to lift safely and protect your walls, floors, and driveways while we clear the clutter.</p>
+              </div>
+            </article>
+            <article class="team-card">
+              <figure class="team-photo">
+                <img src="assets/images/team-03.jpg" alt="Lift N Take team stacking debris for recycling" loading="lazy">
+              </figure>
+              <div class="info">
+                <p class="role">Donation &amp; recycling pros</p>
+                <h3 style="margin:0">Sorting Crew</h3>
+                <p style="margin:0;color:#4b5563">We separate reusable items and recyclables on-site so less junk ends up in the landfill.</p>
+              </div>
+            </article>
+            <article class="team-card">
+              <figure class="team-photo">
+                <img src="assets/images/team-04.jpg" alt="Lift N Take crew posing after a clean garage pickup" loading="lazy">
+              </figure>
+              <div class="info">
+                <p class="role">Home clean-out experts</p>
+                <h3 style="margin:0">Residential Crew</h3>
+                <p style="margin:0;color:#4b5563">From garages to attics, this crew knows how to clear tight spaces quickly and with care.</p>
+              </div>
+            </article>
+            <article class="team-card">
+              <figure class="team-photo">
+                <img src="assets/images/team-05.jpg" alt="Lift N Take team members unloading debris at the yard" loading="lazy">
+              </figure>
+              <div class="info">
+                <p class="role">Property &amp; office cleanouts</p>
+                <h3 style="margin:0">Commercial Crew</h3>
+                <p style="margin:0;color:#4b5563">Trusted by property managers to remove fixtures, cubicles, and renovation debris on tight timelines.</p>
+              </div>
+            </article>
+            <article class="team-card">
+              <figure class="team-photo">
+                <img src="assets/images/team-06.jpg" alt="Lift N Take team celebrating a completed junk removal job" loading="lazy">
+              </figure>
+              <div class="info">
+                <p class="role">Event &amp; donation pickups</p>
+                <h3 style="margin:0">Community Crew</h3>
+                <p style="margin:0;color:#4b5563">Helping local charities, HOAs, and events stay clutter-free with flexible pickup windows.</p>
+              </div>
+            </article>
+            </div>
+            <div class="team-dots" data-dots></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews" aria-label="Reviews">
+      <div class="container">
+        <h2 class="section-title">People love working with us</h2>
+        <p class="section-sub">5-star service from a local team.</p>
+        <div class="reviews">
+          <div class="review"><strong>“Super fast &amp; professional.”</strong><span class="subtle">— Ashley R.</span><p>They showed up on time and cleared our garage in under an hour. Price matched the quote. Highly recommend.</p></div>
+          <div class="review"><strong>“Made moving day easy.”</strong><span class="subtle">— Marcus T.</span><p>Booked the night before, they squeezed us in and hauled away the last-minute junk. Great communication.</p></div>
+          <div class="review"><strong>“Fair pricing, great crew.”</strong><span class="subtle">— Linda P.</span><p>Respectful team, swept everything clean. Loved the upfront pricing and text updates.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="areas" class="alt" aria-label="Service areas">
+      <div class="container">
+        <h2 class="section-title">Service areas</h2>
+        <p class="section-sub">Proudly serving Licking County and neighboring towns with fast scheduling and dependable crews.</p>
+        <div class="areas-grid">
+          <div class="coverage-card">
+            <h3>Where you will spot our trucks</h3>
+            <p>We offer same-day and next-day pickups across the region. If you are on a county line, reach out—chances are we are already nearby.</p>
+            <div class="area-list">
+              <div class="area-item"><span class="city">Newark</span><span class="tag">Same-day pickup</span></div>
+              <div class="area-item"><span class="city">Heath</span><span class="tag">Weekly routes</span></div>
+              <div class="area-item"><span class="city">Granville</span><span class="tag">College move-outs</span></div>
+              <div class="area-item"><span class="city">Pataskala</span><span class="tag">Garage cleanouts</span></div>
+              <div class="area-item"><span class="city">Johnstown</span><span class="tag">Estate support</span></div>
+              <div class="area-item"><span class="city">Zanesville</span><span class="tag">Bulk hauling</span></div>
+              <div class="area-item"><span class="city">Mount Vernon</span><span class="tag">Light demo</span></div>
+            </div>
+          </div>
+          <aside class="areas-cta">
+            <h3>Need help outside this list?</h3>
+            <p>Call the owners directly and we will map a plan, even if your property sits outside our normal route.</p>
+            <ul>
+              <li>Custom quotes for long-distance or multi-stop jobs</li>
+              <li>Flexible scheduling for contractors and property managers</li>
+              <li>Full crew available for cleanouts, demo tear-outs, and heavy lifting</li>
+            </ul>
+            <a class="btn" href="tel:+17404059277">Call (740) 405-9277</a>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="book" aria-label="Book a pickup">
+      <div class="container contact">
+        <div class="card" id="contact">
+          <h2 class="section-title">Book now</h2>
+          <p class="section-sub">Prefer to text? <a href="sms:+17404059277">Text (740) 405-9277</a></p>
+          <form action="https://formspree.io/f/your-id-here" method="POST">
+            <label for="name">Full name</label>
+            <input id="name" name="name" placeholder="Your name" required>
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" placeholder="(740) 405-9277" required>
+            <label for="address">Address</label>
+            <input id="address" name="address" placeholder="Street, City">
+            <label for="details">What do you need removed?</label>
+            <textarea id="details" name="details" placeholder="Tell us about the items…"></textarea>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+              <button class="btn" type="submit">Request Estimate</button>
+              <a class="btn secondary" href="tel:+17404059277">Call Instead</a>
+            </div>
+          </form>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">Contact</h3>
+          <p><strong>Phone:</strong> <a href="tel:+17404059277">(740) 405-9277</a></p>
+          <p><strong>Email:</strong> <a href="mailto:info@liftntake.com">info@liftntake.com</a></p>
+          <p><strong>Hours:</strong> Mon–Sun 7AM–7PM</p>
+          <p class="subtle">Licensed &amp; Insured • All major cards accepted</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer aria-label="Footer">
+    <div class="container foot">
+      <div>
+        <div class="brandline" aria-label="Lift N Take">
+          <img class="logo-mark" src="assets/images/logo.png" alt="Lift N Take logo" loading="lazy">
+        </div>
+        <p class="subtle">Junk removal &amp; property clean up. Locally owned, friendly service.</p>
+      </div>
+      <div>
+        <strong>Quick links</strong>
+        <div class="foot-links">
+          <a href="#services">Services</a>
+          <a href="#how">How it works</a>
+          <a href="#areas">Service areas</a>
+          <a href="#book">Book now</a>
+        </div>
+      </div>
+      <div>
+        <strong>Get a fast quote</strong>
+        <p class="foot-cta"><a class="btn" href="tel:+17404059277">Call (740) 405-9277</a></p>
+      </div>
+    </div>
+    <div class="foot-bottom-wrap">
+      <div class="container foot-bottom">
+        <span>©️ <span id="yr"></span> Lift N Take. All rights reserved.</span>
+        <a href="#home">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="callbar" id="callbar" aria-hidden="true">
+    <a class="callbar-btn" href="tel:+17404059277">Call Now</a>
+    <a class="callbar-btn secondary" href="#book">Book Now</a>
+  </div>
+
+  <script>
+    const drawer = document.getElementById('drawer');
+    const openBtn = document.getElementById('openMenu');
+    const closeBtn = document.getElementById('closeMenu');
+    const callbar = document.getElementById('callbar');
+    let lastScrollY = window.scrollY;
+    let scrollTicking = false;
+    function toggleDrawer(force){
+      if(typeof force === 'boolean'){
+        drawer.classList.toggle('open', force);
+        drawer.setAttribute('aria-hidden', String(!force));
+        if(force && callbar){
+          callbar.classList.remove('show');
+          callbar.setAttribute('aria-hidden','true');
+        }
+      }else{
+        drawer.classList.toggle('open');
+        drawer.setAttribute('aria-hidden', String(!drawer.classList.contains('open')));
+      }
+    }
+    openBtn.addEventListener('click', ()=>toggleDrawer(true));
+    closeBtn.addEventListener('click', ()=>toggleDrawer(false));
+    drawer.addEventListener('click', (event)=>{
+      if(event.target === drawer){
+        toggleDrawer(false);
+      }
+    });
+    document.addEventListener('keydown', (event)=>{
+      if(event.key === 'Escape'){
+        toggleDrawer(false);
+      }
+    });
+    function updateCallbar(){
+      if(!callbar){
+        return;
+      }
+      const currentY = window.scrollY;
+      if(currentY <= 120){
+        callbar.classList.remove('show');
+        callbar.setAttribute('aria-hidden','true');
+      }else if(currentY > lastScrollY + 4){
+        callbar.classList.add('show');
+        callbar.setAttribute('aria-hidden','false');
+      }else if(currentY < lastScrollY - 4){
+        callbar.classList.remove('show');
+        callbar.setAttribute('aria-hidden','true');
+      }
+      lastScrollY = currentY;
+      scrollTicking = false;
+    }
+    window.addEventListener('scroll', ()=>{
+      if(!scrollTicking){
+        window.requestAnimationFrame(updateCallbar);
+        scrollTicking = true;
+      }
+    }, {passive:true});
+    updateCallbar();
+
+    const carousels = document.querySelectorAll('[data-carousel]');
+    carousels.forEach((carousel)=>{
+      const track = carousel.querySelector('[data-track]');
+      const prevBtn = carousel.querySelector('[data-prev]');
+      const nextBtn = carousel.querySelector('[data-next]');
+      const dotsWrap = carousel.querySelector('[data-dots]');
+      if(!track){
+        return;
+      }
+      const slides = Array.from(track.querySelectorAll('.team-card'));
+      if(slides.length <= 1){
+        if(prevBtn){prevBtn.style.display = 'none';}
+        if(nextBtn){nextBtn.style.display = 'none';}
+        return;
+      }
+
+      let positions = [];
+      let activeIndex = 0;
+      let scrollRAF = false;
+      const dots = [];
+
+      if(dotsWrap){
+        dotsWrap.innerHTML = '';
+        slides.forEach((_, index)=>{
+          const dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'team-dot' + (index === 0 ? ' is-active' : '');
+          dot.setAttribute('aria-label', `Go to team card ${index + 1}`);
+          dot.addEventListener('click', ()=>goTo(index));
+          dotsWrap.appendChild(dot);
+          dots.push(dot);
+        });
+      }
+
+      function updatePositions(){
+        positions = slides.map(slide => slide.offsetLeft);
+        updateControls();
+      }
+
+      function updateControls(){
+        if(!prevBtn || !nextBtn){
+          return;
+        }
+        const maxScroll = track.scrollWidth - track.clientWidth - 1;
+        prevBtn.disabled = track.scrollLeft <= 0;
+        nextBtn.disabled = track.scrollLeft >= maxScroll;
+      }
+
+      function setActive(index){
+        activeIndex = Math.max(0, Math.min(slides.length - 1, index));
+        if(dots.length){
+          dots.forEach((dot, idx)=>{
+            dot.classList.toggle('is-active', idx === activeIndex);
+          });
+        }
+      }
+
+      function goTo(index){
+        if(!positions.length){
+          updatePositions();
+        }
+        const targetIndex = Math.max(0, Math.min(slides.length - 1, index));
+        const target = slides[targetIndex];
+        if(!target){
+          return;
+        }
+        track.scrollTo({left: target.offsetLeft, behavior: 'smooth'});
+        setActive(targetIndex);
+      }
+
+      function handleScroll(){
+        if(scrollRAF){
+          return;
+        }
+        scrollRAF = true;
+        window.requestAnimationFrame(()=>{
+          scrollRAF = false;
+          const scrollLeft = track.scrollLeft;
+          let closestIndex = activeIndex;
+          let smallestDistance = Number.POSITIVE_INFINITY;
+          positions.forEach((pos, idx)=>{
+            const distance = Math.abs(scrollLeft - pos);
+            if(distance < smallestDistance){
+              smallestDistance = distance;
+              closestIndex = idx;
+            }
+          });
+          setActive(closestIndex);
+          updateControls();
+        });
+      }
+
+      prevBtn && prevBtn.addEventListener('click', ()=>{
+        goTo(activeIndex - 1);
+      });
+      nextBtn && nextBtn.addEventListener('click', ()=>{
+        goTo(activeIndex + 1);
+      });
+      track.addEventListener('scroll', handleScroll, {passive:true});
+      window.addEventListener('resize', ()=>{
+        updatePositions();
+      });
+      updatePositions();
+      setActive(0);
+    });
+
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

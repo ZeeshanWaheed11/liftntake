@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs>
+    <linearGradient id="gd" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00b4d8" />
+      <stop offset="100%" stop-color="#111111" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" rx="48" fill="url(#gd)" />
+  <circle cx="300" cy="240" r="118" fill="rgba(15,23,42,0.18)" />
+  <path d="M208 420c40-36 80-54 128-54s88 18 128 54v46c-42 34-84 50-128 50s-86-16-128-50z" fill="rgba(0,0,0,0.25)" />
+  <text x="300" y="260" text-anchor="middle" font-family="'Inter', sans-serif" font-size="120" fill="#ffffff" font-weight="700">A</text>
+  <text x="300" y="420" text-anchor="middle" font-family="'Inter', sans-serif" font-size="34" fill="#ffffff" font-weight="600">Alex Reyes</text>
+  <text x="300" y="460" text-anchor="middle" font-family="'Inter', sans-serif" font-size="22" fill="#d1f8ff">Logistics Coordinator</text>
+</svg>

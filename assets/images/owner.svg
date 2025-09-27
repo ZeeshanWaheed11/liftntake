@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#111111" />
+      <stop offset="100%" stop-color="#00C2FF" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" rx="48" fill="url(#g)" />
+  <circle cx="300" cy="240" r="120" fill="rgba(255,255,255,0.15)" />
+  <path d="M220 420c36-32 72-48 112-48s76 16 112 48v40c-40 32-76 48-112 48s-76-16-112-48z" fill="rgba(0,0,0,0.35)" />
+  <text x="300" y="260" text-anchor="middle" font-family="'Inter', sans-serif" font-size="120" fill="#ffffff" font-weight="700">N</text>
+  <text x="300" y="420" text-anchor="middle" font-family="'Inter', sans-serif" font-size="34" fill="#ffffff" font-weight="600">Nathan Walker</text>
+  <text x="300" y="460" text-anchor="middle" font-family="'Inter', sans-serif" font-size="22" fill="#e0f6ff">Owner & Founder</text>
+</svg>
