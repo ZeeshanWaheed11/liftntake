@@ -262,6 +262,7 @@
       .owner{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:32px;align-items:start}
     }
   </style>
+<style>.ghl-form-embed iframe{width:100%;border:0;border-radius:3px}</style>
 </head>
 <body>
   <div class="topbar">
@@ -499,20 +500,27 @@
         <div class="card" id="contact">
           <h2 class="section-title">Book now</h2>
           <p class="section-sub">Prefer to text? <a href="sms:+17404059277">Text (740) 405-9277</a></p>
-          <form action="https://formspree.io/f/your-id-here" method="POST">
-            <label for="name">Full name</label>
-            <input id="name" name="name" placeholder="Your name" required>
-            <label for="phone">Phone</label>
-            <input id="phone" name="phone" placeholder="(740) 405-9277" required>
-            <label for="address">Address</label>
-            <input id="address" name="address" placeholder="Street, City">
-            <label for="details">What do you need removed?</label>
-            <textarea id="details" name="details" placeholder="Tell us about the items…"></textarea>
-            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
-              <button class="btn" type="submit">Request Estimate</button>
-              <a class="btn secondary" href="tel:+17404059277">Call Instead</a>
-            </div>
-          </form>
+          <!-- GHL form embed (LeadConnector) -->
+<div class="ghl-form-embed">
+  <iframe
+    src="https://api.leadconnectorhq.com/widget/form/dxx11od2Xx78v2ijgrFv"
+    style="width:100%;height:100%;border:none;border-radius:3px"
+    id="inline-dxx11od2Xx78v2ijgrFv" 
+    data-layout="{'id':'INLINE'}"
+    data-trigger-type="alwaysShow"
+    data-trigger-value=""
+    data-activation-type="alwaysActivated"
+    data-activation-value=""
+    data-deactivation-type="neverDeactivate"
+    data-deactivation-value=""
+    data-form-name="Form 0"
+    data-height="645"
+    data-layout-iframe-id="inline-dxx11od2Xx78v2ijgrFv"
+    data-form-id="dxx11od2Xx78v2ijgrFv"
+    title="Form 0"
+        >
+</iframe>
+</div>
         </div>
         <div class="card">
           <h3 style="margin-top:0">Contact</h3>
@@ -732,5 +740,7 @@
 
     document.getElementById('yr').textContent = new Date().getFullYear();
   </script>
+
+<script src="https://link.msgsndr.com/js/form_embed.js"></script>
 </body>
 </html>
